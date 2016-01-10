@@ -93,7 +93,7 @@ public class Server extends Thread {
 					Client tmpClient = clientsQueue.remove(0);
 					try {
 						Thread.sleep(rand.nextInt(Simulation.MAX_PROCESING_TIME));
-						System.out.println(response() + "for Client " + (tmpClient.getId()-10) + " request");
+						System.out.println(response() + "for Client " + (tmpClient.getIden()) + " request");
 					} catch (InterruptedException e) {
 						System.out.println(e.getMessage());
 						e.printStackTrace();

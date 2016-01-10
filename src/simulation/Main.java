@@ -6,8 +6,9 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Simulation.start();
-		Thread.yield();
+				
+		Simulation.start();		
+		
 	}
 
 }

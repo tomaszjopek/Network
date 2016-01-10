@@ -33,12 +33,9 @@ public class Simulation implements Parameters {
 				servers.get(i).start();			
 		}
 		
-		while(!allCompleted());
-		for(int i=0;i<MAX_SERVERS;i++) {
-			servers.get(i).setFlag(false);
-		}
-		
+					
 	}
+	
 	
 	public static boolean allCompleted() {
 		for(int i=0;i<MAX_CLIENTS;i++)
