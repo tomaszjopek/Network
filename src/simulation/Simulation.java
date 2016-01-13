@@ -33,7 +33,28 @@ public class Simulation implements Parameters {
 				servers.get(i).start();			
 		}
 		
-					
+		for(int i=0;i<MAX_CLIENTS;i++)
+			try {
+				clients.get(i).join();
+			} catch (InterruptedException e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}
+		
+	//	while(!allCompleted());
+	//	while(!allProceed());
+		
+		for(int i=0;i<MAX_SERVERS;i++) {
+			servers.get(i).setFlag(false);
+		}
+		
+		for(int i=0;i<MAX_SERVERS;i++)
+			try {
+				servers.get(i).join();
+			} catch (InterruptedException e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}					
 	}
 	
 	
@@ -43,5 +64,14 @@ public class Simulation implements Parameters {
 				return false;
 		return true;
 	}
+	
+	public static boolean allProceed() {
+		for(int i=0;i<MAX_SERVERS;i++)
+			if(servers.get(i).getClientsQueue().size() != 0)
+				return false;
+		return true;
+	}
+	
+	
 
 }

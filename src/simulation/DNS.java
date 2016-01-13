@@ -8,7 +8,7 @@ import java.util.Random;
 @SuppressWarnings("unused")
 public class DNS {
 
-	public static List<? extends Server> servers;
+	public static volatile List<? extends Server> servers;
 	private Random rand;
 	
 	public DNS() {

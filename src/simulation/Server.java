@@ -10,7 +10,7 @@ public class Server extends Thread {
 	private boolean active;
 	private List<Client> clientsQueue;
 	private boolean flag = true;
-	Random rand = new Random();
+	private Random rand = new Random();
 
 	public Server() {
 		setIp("0.0.0.0");
@@ -74,8 +74,9 @@ public class Server extends Thread {
 	 * @return status of the server
 	 * @throws InterruptedException 
 	 */
-	public synchronized boolean availability() throws InterruptedException {
+	public synchronized boolean availability(Client client) throws InterruptedException {
 		Thread.sleep(rand.nextInt(Simulation.MAX_CLIENT_SERVER_TIME));
+		System.out.println(this + " return status to:  " + client);
 		Thread.sleep(rand.nextInt(Simulation.MAX_CLIENT_SERVER_TIME));
 		return isActive();
 	}
@@ -87,13 +88,14 @@ public class Server extends Thread {
 	@Override
 	public void run() {
 		
-		while(flag) {
+		while(flag || !clientsQueue.isEmpty()) {
 			synchronized(clientsQueue) {
 				if(!clientsQueue.isEmpty()) {
 					Client tmpClient = clientsQueue.remove(0);
 					try {
 						Thread.sleep(rand.nextInt(Simulation.MAX_PROCESING_TIME));
-						System.out.println(response() + "for Client " + (tmpClient.getIden()) + " request");
+						if(tmpClient != null)
+							System.out.println(response() + "for Client " + (tmpClient.getIden()) + " request");
 					} catch (InterruptedException e) {
 						System.out.println(e.getMessage());
 						e.printStackTrace();
@@ -102,6 +104,11 @@ public class Server extends Thread {
 			}
 		}
 		
+	}
+	
+	@Override
+	public String toString() {
+		return "server: " + this.id + ", " + this.ip;
 	}
 
 }
