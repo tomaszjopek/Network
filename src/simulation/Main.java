@@ -1,7 +1,6 @@
 package simulation;
 
 
-
 public class Main {
 
 	/**
@@ -14,6 +13,5 @@ public class Main {
 		System.out.println("                                KONIEC                            ");
 		System.out.println("__________________________________________________________________");
 		
-	}
-
+    }
 }

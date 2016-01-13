@@ -54,8 +54,10 @@ public class Client extends Thread {
 					{
 						System.out.println(this + "send request to DNS server");
 						Server tmpServer = DNS.getServerIp(server, this);
+
 						if(tmpServer.availability(this)) {
 							System.out.println(this + "aks about status of " + tmpServer);
+
 							tmpServer.getClientsQueue().add(this);
 							decrementInquiry();
 						}

@@ -10,6 +10,7 @@ public class Server extends Thread {
 	private boolean active;
 	private List<Client> clientsQueue;
 	private boolean flag = true;
+
 	private Random rand = new Random();
 
 	public Server() {
@@ -109,6 +110,7 @@ public class Server extends Thread {
 	@Override
 	public String toString() {
 		return "server: " + this.id + ", " + this.ip;
+
 	}
 
 }

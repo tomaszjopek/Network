@@ -1,6 +1,7 @@
 package simulation;
 
 public interface Parameters {
+
 	int INQUIRIES = 500;
 	int MAX_SERVERS = 10;
 	int MAX_CLIENTS = 100;

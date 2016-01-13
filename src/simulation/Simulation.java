@@ -70,8 +70,6 @@ public class Simulation implements Parameters {
 			if(servers.get(i).getClientsQueue().size() != 0)
 				return false;
 		return true;
-	}
-	
-	
+	}	
 
 }
